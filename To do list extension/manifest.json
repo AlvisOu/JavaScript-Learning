@@ -3,6 +3,7 @@
     "version": "1.0",
     "name": "MY TO-DOS",
     "action": {
-        "default_popup": "todo.html"
+        "default_popup": "todo.html",
+        "default_icon": "icon.jpg"
     }
 }
