@@ -1,17 +1,22 @@
 body {
     background-color: peachpuff;
-    min-width: 400px;
+    min-width: 300px; 
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 #container {
-    justify-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-h1 {
-    color: rgb(180, 79, 28);
+#input-field {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 5px;
 }
 
 #input-task {
@@ -33,9 +38,57 @@ h1 {
     color: rgb(180, 79, 28);
     border: rgb(180, 79, 28) solid 2px;
     border-radius: 5px;
+    cursor: pointer;
+    margin: 3px;
 }
 
 #input-btn:hover {
     background-color: rgb(180, 79, 28);
     color: white;
+}
+
+.task {
+    background-color: white;
+    margin: 5px;
+    padding: 5px;
+    border: rgb(180, 79, 28) solid 2px;
+    border-radius: 10px;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.task button {
+    transition: .3s;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    background-color: white;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.task li{
+    list-style: none;
+    flex: 4;
+}
+
+.task .complete-btn{
+    color: green;
+    border: solid 2px green;
+}
+
+.task .complete-btn:hover{
+    background-color: green;
+    color:white;
+}
+
+.task .delete-btn{
+    color: red;
+    border: solid 2px red;
+}
+
+.task .delete-btn:hover{
+    background-color: red;
+    color:white;
 }

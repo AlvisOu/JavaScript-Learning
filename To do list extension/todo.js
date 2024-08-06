@@ -2,7 +2,7 @@ const inputBtn = document.getElementById('input-btn');
 const inputTask = document.getElementById('input-task');
 const inputDiv = document.getElementById('input-field');
 const deleteBtn = document.getElementsByClassName('delete-btn')
-
+const completeBtn = document.getElementsByClassName('complete-btn')
 const tasksFromLocalStorage = JSON.parse(localStorage.getItem("tasks") );
 
 let taskArray = [];
@@ -29,14 +29,23 @@ function listenForDelete(){
         deleteBtn[i].addEventListener('click', function(e){
             let target = e.target.closest('.delete-btn');
             
-            for (let i=0;i<taskArray.length;i++){
-                if(taskArray[i] === target.parentElement.firstElementChild.innerText){
-                    
-                    taskArray.splice(i, 1);
-                }
-            }
+            let id = target.parentElement.getAttribute('id');
+            let index = Number(id.slice(4));  
+            taskArray.splice(index, 1);
+
             localStorage.setItem("tasks", JSON.stringify(taskArray) );
             renderTasks();
+        })
+    }
+    
+}
+
+function listenForStrikeThrough(){
+    for (let i=0; i<taskArray.length;i++){
+        completeBtn[i].addEventListener('click', function(e){
+            let target = e.target.closest('.task');
+            target.style.textDecoration = "line-through";
+            
         })
     }
     
@@ -49,6 +58,7 @@ function renderTasks(){
         
         let task = document.createElement('div');
         task.classList.add('task');
+        task.setAttribute('id', `task${i}`);
 
         let list = document.createElement('li');
         list.innerText = `${taskArray[i]}`;
@@ -68,5 +78,6 @@ function renderTasks(){
     }
     inputDiv.parentElement.appendChild(taskContainer);
     inputDiv.nextElementSibling.remove();
+    listenForStrikeThrough();
     listenForDelete();
 }
